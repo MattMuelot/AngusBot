@@ -1,0 +1,10 @@
+.idea/
+<<<<<<< HEAD
+__pycache__/
+app.spec
+build/
+dist/
+my_auths.py
+=======
+>>>>>>> dbe7d8aba4bef226b0a991757fd7719a9ec91cc7
+venv/
