@@ -96,5 +96,18 @@ class MyApp:
 
 m = MyApp()
 m.grab_quotes()
-m.send_inspiration()
+m.set_date()
 m.on_this_day()
+m.send_on_this_day()
+while True:
+    try:
+        d_check = m.check_date()
+        if d_check is True:
+            m.send_on_this_day()
+        else:
+            pass
+        m.send_inspiration()
+        t.sleep(43200)
+    except tweepy.TweepError:
+        print('Duplicate')
+        continue
