@@ -1,6 +1,8 @@
 .idea/
 <<<<<<< HEAD
+nohup.out
 __pycache__/
+my-project-env/
 app.spec
 build/
 dist/
