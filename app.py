@@ -102,14 +102,12 @@ m.set_date()
 m.on_this_day()
 m.send_on_this_day()
 
-print('Initializing')
-print()
-
 while True:
     try:
         d_check = m.check_date()
         if d_check is True:
             m.send_on_this_day()
+            t.sleep(6000)
         else:
             pass
         m.send_inspiration()
