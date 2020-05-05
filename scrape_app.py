@@ -10,6 +10,8 @@ class WebScrape:
         self.this_day = []
 
     def grab_quotes(self):
+        """Scrapes the websites, held in variable lk. Grabs all the quotes and puts them into the
+        attribute self.quotes."""
         lk = 'https://www.keepinspiring.me/100-most-inspirational-sports-quotes-of-all-time/'
         page_load = requests.get(lk)
         soup = BeautifulSoup(page_load.content, 'html.parser')
@@ -43,6 +45,8 @@ class WebScrape:
                     self.quotes.append(final_str)
 
     def on_this_day(self):
+        """Scrapes the website, held in variable lk. Grabs all events and adds them to
+        attribute self.this_day."""
         lk = 'https://www.onthisday.com/sport/events.php'
         page_load = requests.get(lk)
         soup = BeautifulSoup(page_load.content, 'html.parser')
@@ -51,7 +55,9 @@ class WebScrape:
                 self.this_day.append(l.text)
 
     def return_quotes(self):
+        """Returns attribute."""
         return self.quotes
 
     def return_otd(self):
+        """Returns attribute."""
         return self.this_day

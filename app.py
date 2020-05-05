@@ -20,5 +20,7 @@ while True:
             my_bot.post_quote()
             t.sleep(25000)
     except:
+        """Error found here is a duplicate error. Not sure what the actual exception
+        is called. It gets raised when tweepy finds a duplicate tweet on the twitter timeline."""
         with open('log.txt', 'a', encoding='utf-8') as f:
             message = f'DUPLICATE DETECTED {datetime.datetime.today()}'

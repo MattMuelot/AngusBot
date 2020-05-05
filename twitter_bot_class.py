@@ -18,17 +18,21 @@ class TwitterBot:
                            '#basketball', '#baseball', '#football', '#hockey', '#soccer']
 
     def post_quote(self):
+        """Using Tweepy API, posts a random quote from the self.quotes attribute"""
         quote = r.choice(self.quotes) + '\n\n'
         for h in self.my_hashes:
             quote += f' {h}'
         self.api.update_status(quote)
 
     def set_date(self):
+        """Sets the self.today_date attribute to the current date."""
         cur_date = datetime.datetime.today()
         cur_date = str(cur_date)
         self.today_date = cur_date[0:10]
 
     def new_date(self):
+        """Using datetime, checks to see if the attribute self.today_date is still correct. If not,
+        it runs the set_date() method."""
         date_check = datetime.datetime.today()
         date_check = str(date_check)
         if date_check[0:10] != self.today_date:
@@ -38,6 +42,8 @@ class TwitterBot:
             return False
 
     def post_otd(self):
+        """Using Tweepy API, posts a sporting event that took place on this date in the past from the
+        self.this_day attribute."""
         otd = r.choice(self.this_day)
         new_otd = f'On This Day in {otd[0:4]}:\n{otd[5:]}\n\n'
         for h in self.day_hashes:
