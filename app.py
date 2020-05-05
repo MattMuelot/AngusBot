@@ -3,6 +3,7 @@
 from scrape_app import *
 from twitter_bot_class import *
 import time as t
+import datetime
 
 scrape = WebScrape()
 scrape.grab_quotes()
@@ -19,4 +20,5 @@ while True:
             my_bot.post_quote()
             t.sleep(25000)
     except:
-        pass
+        with open('log.txt', 'a', encoding='utf-8') as f:
+            message = f'DUPLICATE DETECTED {datetime.datetime.today()}'
