@@ -114,6 +114,6 @@ while True:
             pass
         m.send_inspiration()
         t.sleep(43200)
-    except tweepy.TweepError:
+    except:
         print('Duplicate')
         continue
