@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import tweepy
 from my_auths import *
 import time as t
