@@ -93,7 +93,7 @@ class MyApp:
         else:
             return False
 
+
 m = MyApp()
 m.grab_quotes()
 m.send_inspiration()
-
