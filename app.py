@@ -97,3 +97,4 @@ class MyApp:
 m = MyApp()
 m.grab_quotes()
 m.send_inspiration()
+m.on_this_day()
