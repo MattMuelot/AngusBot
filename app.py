@@ -10,7 +10,7 @@ scrape.grab_quotes()
 scrape.on_this_day()
 my_bot = TwitterBot(scrape.quotes, scrape.this_day)
 
-while True:
+while True:  # Bot mainloop
     try:
         current_date = my_bot.new_date()
         if current_date:
