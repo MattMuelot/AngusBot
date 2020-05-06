@@ -3,7 +3,7 @@ from my_auths import *
 import random as r
 import time as t
 import datetime
-from bot_files.scrape_app import WebScrape
+from scrape_app import WebScrape
 
 
 class TwitterBot(WebScrape):
