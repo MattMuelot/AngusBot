@@ -44,7 +44,7 @@ class WebScrape:
                 if final_str not in self.quotes:
                     self.quotes.append(final_str)
 
-    def on_this_day(self):
+    def grab_on_this_day(self):
         """Scrapes the website, held in variable lk. Grabs all events and adds them to
         attribute self.this_day."""
         lk = 'https://www.onthisday.com/sport/events.php'

@@ -1,16 +1,17 @@
 import tweepy
 from my_auths import *
 import random as r
+import time as t
 import datetime
+from scrape_app import WebScrape
 
 
-class TwitterBot:
-    def __init__(self, quotes, this_day):
+class TwitterBot(WebScrape):
+    def __init__(self):
+        super().__init__()
         self.auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
         self.auth.set_access_token(CONSUMER_TOKEN, CONSUMER_SECRET)
         self.api = tweepy.API(self.auth)
-        self.quotes = quotes
-        self.this_day = this_day
         self.today_date = None
         self.my_hashes = ['#sports', '#dailyquotes', '#baseball', '#baseketball',
                           '#football', '#hockey']
@@ -49,3 +50,20 @@ class TwitterBot:
         for h in self.day_hashes:
             new_otd += f' {h}'
         self.api.update_status(new_otd)
+
+    def bot_mainloop(self):
+        self.grab_quotes()
+        self.grab_on_this_day()
+        while True:
+            try:
+                current_date = self.new_date()
+                if current_date:
+                    self.post_otd()
+                    t.sleep(9000)
+                else:
+                    self.post_quote()
+                    t.sleep(24000)
+            except tweepy.TweepError:
+                with open('log.txt', 'a', encoding='utf-8') as f:
+                    message = f'DUPLICATE DETECTED {datetime.datetime.today()}'
+                    f.write(message)
