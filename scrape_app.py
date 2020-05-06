@@ -53,11 +53,3 @@ class WebScrape:
         for l in soup.find_all('li', class_='event'):
             if l.text not in self.this_day:
                 self.this_day.append(l.text)
-
-    def return_quotes(self):
-        """Returns attribute."""
-        return self.quotes
-
-    def return_otd(self):
-        """Returns attribute."""
-        return self.this_day
