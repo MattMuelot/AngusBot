@@ -64,6 +64,5 @@ class TwitterBot(WebScrape):
                     self.post_quote()
                     t.sleep(24000)
             except tweepy.TweepError:
-                with open('log.txt', 'a', encoding='utf-8') as f:
-                    message = f'DUPLICATE DETECTED {datetime.datetime.today()}'
-                    f.write(message)
+                # Todo: Exception Handling Log
+                pass
