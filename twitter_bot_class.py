@@ -59,6 +59,8 @@ class TwitterBot(WebScrape):
                 current_date = self.new_date()
                 if current_date:
                     self.post_otd()
+		    with open('log.txt', 'a') as f:
+		        f.write(f'On this day posted - {datetime.datetime.today}'
                     t.sleep(9000)
                 else:
                     self.post_quote()
