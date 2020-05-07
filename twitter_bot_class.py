@@ -27,6 +27,16 @@ class TwitterBot(WebScrape):
             quote += f' {h}'
         self.api.update_status(quote)
 
+    @BotDecorators.logging
+    def post_otd(self):
+        """Using Tweepy API, posts a sporting event that took place on this date in the past from the
+        self.this_day attribute."""
+        otd = r.choice(self.this_day)
+        new_otd = f'On This Day in {otd[0:4]}:\n{otd[5:]}\n\n'
+        for h in self.day_hashes:
+            new_otd += f' {h}'
+        self.api.update_status(new_otd)
+
     def set_date(self):
         """Sets the self.today_date attribute to the current date."""
         cur_date = datetime.datetime.today()
@@ -43,16 +53,6 @@ class TwitterBot(WebScrape):
             return True
         else:
             return False
-
-    @BotDecorators.logging
-    def post_otd(self):
-        """Using Tweepy API, posts a sporting event that took place on this date in the past from the
-        self.this_day attribute."""
-        otd = r.choice(self.this_day)
-        new_otd = f'On This Day in {otd[0:4]}:\n{otd[5:]}\n\n'
-        for h in self.day_hashes:
-            new_otd += f' {h}'
-        self.api.update_status(new_otd)
 
     def bot_mainloop(self):
         self.grab_quotes()
