@@ -60,11 +60,14 @@ class TwitterBot(WebScrape):
                 if current_date:
                     self.post_otd()
                     with open('log.txt', 'a') as f:
-                        f.write(f'On this day posted - {datetime.datetime.today}')
+                        f.write(f'On this day posted - {datetime.datetime.today()}\n')
                     t.sleep(9000)
                 else:
                     self.post_quote()
+                    with open('log.txt', 'a') as f:
+                        f.write(f'Quote posted - {datetime.datetime.today()}\n')
                     t.sleep(24000)
             except tweepy.TweepError:
                 # Todo: Exception Handling Log
-                pass
+                with open('log.txt', 'a') as f:
+                    f.write(f'Tweepy error - {datetime.datetime.today()}\n')
