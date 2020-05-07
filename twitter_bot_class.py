@@ -4,6 +4,7 @@ import random as r
 import time as t
 import datetime
 from scrape_app import WebScrape
+from bot_decorators import BotDecorators
 
 
 class TwitterBot(WebScrape):
@@ -18,6 +19,7 @@ class TwitterBot(WebScrape):
         self.day_hashes = ['#sports', '#onthisday', '#baseball',
                            '#basketball', '#baseball', '#football', '#hockey', '#soccer']
 
+    @BotDecorators.logging
     def post_quote(self):
         """Using Tweepy API, posts a random quote from the self.quotes attribute"""
         quote = r.choice(self.quotes) + '\n\n'
@@ -42,6 +44,7 @@ class TwitterBot(WebScrape):
         else:
             return False
 
+    @BotDecorators.logging
     def post_otd(self):
         """Using Tweepy API, posts a sporting event that took place on this date in the past from the
         self.this_day attribute."""
@@ -59,13 +62,9 @@ class TwitterBot(WebScrape):
                 current_date = self.new_date()
                 if current_date:
                     self.post_otd()
-                    with open('log.txt', 'a') as f:
-                        f.write(f'On this day posted - {datetime.datetime.today()}\n')
                     t.sleep(9000)
                 else:
                     self.post_quote()
-                    with open('log.txt', 'a') as f:
-                        f.write(f'Quote posted - {datetime.datetime.today()}\n')
                     t.sleep(24000)
             except tweepy.TweepError:
                 # Todo: Exception Handling Log
