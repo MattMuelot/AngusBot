@@ -9,5 +9,5 @@ class BotDecorators:
         def wrapper(*args):
             func(*args)
             with open('log.txt', 'a') as f:
-                f.write(f'{func.__name__} executed - {datetime.datetime.today()}\n')
+                f.write(f'"{func.__name__}" executed - {datetime.datetime.today()}\n')
         return wrapper
