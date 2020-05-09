@@ -13,15 +13,15 @@ class BotDecorators:
                 f.write(f'"{func.__name__}" executed - {datetime.datetime.today()}\n')
         return wrapper
 
-    @classmethod
-    def bot_threader(cls, func):
-        threads = []
-
-        def wrapper(*args, **kwargs):
-            t = threading.Thread(target=func, args=args, kwargs=kwargs)
-            threads.append(t)
-            t.start()
-
-        for thread in threads:
-            thread.join()
-        return wrapper
+    # @classmethod
+    # def bot_threader(cls, func):
+    #     threads = []
+    #
+    #     def wrapper(*args, **kwargs):
+    #         t = threading.Thread(target=func, args=args, kwargs=kwargs)
+    #         threads.append(t)
+    #         t.start()
+    #
+    #     for thread in threads:
+    #         thread.join()
+    #     return wrapper

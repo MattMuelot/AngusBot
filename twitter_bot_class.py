@@ -51,7 +51,7 @@ class TwitterBot(WebScrape):
         else:
             return False
 
-    @BotDecorators.bot_threader
+    # @BotDecorators.bot_threader
     def bot_mainloop(self):
         self.grab_quotes()
         self.grab_on_this_day()
