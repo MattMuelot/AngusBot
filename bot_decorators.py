@@ -18,7 +18,7 @@ class BotDecorators:
         threads = []
 
         def wrapper(*args, **kwargs):
-            t = threading.Thread(target=func)
+            t = threading.Thread(target=func, args=args, kwargs=kwargs)
             threads.append(t)
             t.start()
 

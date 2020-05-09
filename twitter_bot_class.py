@@ -1,5 +1,4 @@
 import tweepy
-from my_auths import *
 import random as r
 import time as t
 import datetime
@@ -8,11 +7,9 @@ from bot_decorators import BotDecorators
 
 
 class TwitterBot(WebScrape):
-    def __init__(self):
+    def __init__(self, api):
         super().__init__()
-        self.auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
-        self.auth.set_access_token(CONSUMER_TOKEN, CONSUMER_SECRET)
-        self.api = tweepy.API(self.auth)
+        self.api = api
         self.today_date = None
         self.my_hashes = ['#sports', '#dailyquotes', '#baseball', '#baseketball',
                           '#football', '#hockey']
