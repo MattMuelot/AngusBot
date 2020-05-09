@@ -67,3 +67,4 @@ class TwitterBot(WebScrape):
                 # Todo: Exception Handling Log
                 with open('log.txt', 'a') as f:
                     f.write(f'Tweepy error - {datetime.datetime.today()}\n')
+                    t.sleep(1800)

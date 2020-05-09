@@ -1,5 +1,4 @@
 import datetime
-import threading
 
 
 class BotDecorators:
