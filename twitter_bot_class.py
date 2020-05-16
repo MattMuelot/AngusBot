@@ -4,12 +4,15 @@ import time as t
 import datetime
 from scrape_app import WebScrape
 from bot_decorators import BotDecorators
+from my_auths import *
 
 
 class TwitterBot(WebScrape):
-    def __init__(self, api):
+    def __init__(self):
         super().__init__()
-        self.api = api
+        self.auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
+        self.auth.set_access_token(CONSUMER_TOKEN, CONSUMER_SECRET)
+        self.api = tweepy.API(self.auth)
         self.today_date = None
         self.my_hashes = ['#sports', '#dailyquotes', '#baseball', '#baseketball',
                           '#football', '#hockey']
