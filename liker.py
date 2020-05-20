@@ -37,4 +37,10 @@ def main(keywords):
     stream.filter(track=keywords, languages=['en'])
 
 
-main(['sports', 'baseball', 'basketball', 'football', 'soccer', 'nba', 'mlb', 'nfl'])
+while True:
+    try:
+        main(['sports', 'baseball', 'basketball', 'football', 'soccer', 'nba', 'mlb', 'nfl'])
+        time.sleep(60)
+    except:
+        main(['sports', 'baseball', 'basketball', 'football', 'soccer', 'nba', 'mlb', 'nfl'])
+        time.sleep(60)
