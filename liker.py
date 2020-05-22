@@ -23,7 +23,6 @@ class Listener(tweepy.StreamListener):
         if not tweet.favorited:
             try:
                 tweet.favorite()
-                print('Liked')
                 time.sleep(30)
             except Exception as e:
                 time.sleep(30)
