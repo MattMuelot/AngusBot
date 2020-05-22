@@ -42,5 +42,4 @@ while True:
         main(['sports', 'baseball', 'basketball', 'football', 'soccer', 'nba', 'mlb', 'nfl'])
         time.sleep(60)
     except:
-        main(['sports', 'baseball', 'basketball', 'football', 'soccer', 'nba', 'mlb', 'nfl'])
-        time.sleep(60)
+        time.sleep(120)
