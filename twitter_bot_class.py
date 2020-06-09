@@ -58,6 +58,7 @@ class TwitterBot(WebScrape):
         self.grab_quotes()
         self.grab_on_this_day()
         while True:
+            # noinspection PyBroadException
             try:
                 current_date = self.new_date()
                 if current_date:
@@ -66,8 +67,8 @@ class TwitterBot(WebScrape):
                 else:
                     self.post_quote()
                     t.sleep(24000)
-            except tweepy.TweepError:
+            except Exception as e:
                 # Todo: Exception Handling Log
                 with open('log.txt', 'a') as f:
-                    f.write(f'Tweepy error - {datetime.datetime.today()}\n')
+                    f.write(f'Error - {datetime.datetime.today()}\n')
                     t.sleep(1800)
