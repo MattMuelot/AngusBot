@@ -8,3 +8,5 @@ dist/
 my_auths.py
 venv/
 log.txt
+liker.py
+liker.py.save
