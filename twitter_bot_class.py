@@ -14,9 +14,9 @@ class TwitterBot(WebScrape):
         self.auth.set_access_token(CONSUMER_TOKEN, CONSUMER_SECRET)
         self.api = tweepy.API(self.auth)
         self.today_date = None
-        self.my_hashes = ['#sports', '#dailyquotes', '#baseball', '#baseketball',
+        self.my_hashes = ['#dailyquote', '#sports', '#dailyquotes', '#baseball', '#baseketball',
                           '#football', '#hockey']
-        self.day_hashes = ['#sports', '#onthisday', '#baseball',
+        self.day_hashes = ['#dailyquote', '#sports', '#onthisday', '#baseball',
                            '#basketball', '#baseball', '#football', '#hockey', '#soccer']
 
     @BotDecorators.logging
