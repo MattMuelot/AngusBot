@@ -40,5 +40,6 @@ while True:
     try:
         main(['sports', 'baseball', 'basketball', 'football', 'soccer', 'nba', 'mlb', 'nfl'])
         time.sleep(60)
-    except:
+    # noinspection PyBroadException
+    except Exception as e:
         time.sleep(120)

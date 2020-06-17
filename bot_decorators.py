@@ -11,3 +11,9 @@ class BotDecorators:
             with open('log.txt', 'a') as f:
                 f.write(f'"{func.__name__}" executed - {datetime.datetime.today()}\n')
         return wrapper
+
+    @classmethod
+    def on_error(cls, func):
+        """Decorator for error handling."""
+        def wrapper(*args, **kwargs):
+            pass
