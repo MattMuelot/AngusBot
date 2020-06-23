@@ -38,8 +38,12 @@ class TwitterBot(WebScrape):
         otd = r.choice(self.this_day)
         new_otd = f'On This Day in {otd[0:4]}:\n{otd[5:]}\n\n'
         for h in self.day_hashes:
-            new_otd += f' {h}'
+            if len(new_otd) + len(h) < 280:
+                new_otd += f' {h}'
+            else:
+                break
         self.api.update_status(new_otd)
+        return len(new_otd)
 
     def set_date(self):
         """Sets the self.today_date attribute to the current date."""
