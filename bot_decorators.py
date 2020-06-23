@@ -7,9 +7,10 @@ class BotDecorators:
     def logging(cls, func):
         """Logs output to a text file in the project directory."""
         def wrapper(*args, **kwargs):
-            func(*args, **kwargs)
+            total_chars = func(*args, **kwargs)
             with open('log.txt', 'a') as f:
-                f.write(f'"{func.__name__}" executed - {datetime.datetime.today()}\n')
+                curr_date = datetime.datetime.today()
+                f.write(f'"{func.__name__}" executed in {total_chars} characters - {str(curr_date)[0:19]}\n')
         return wrapper
 
     @classmethod

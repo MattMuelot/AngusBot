@@ -21,11 +21,15 @@ class TwitterBot(WebScrape):
 
     @BotDecorators.logging
     def post_quote(self):
-        """Using Tweepy API, posts a random quote from the self.quotes attribute"""
+        """Using Tweepy API, posts a random quote from the self.quotes attribute. Now added protection for char limit"""
         quote = r.choice(self.quotes) + '\n\n'
         for h in self.my_hashes:
-            quote += f' {h}'
+            if len(quote) + len(h) < 280:
+                quote += f' {h}'
+            else:
+                break
         self.api.update_status(quote)
+        return len(quote)
 
     @BotDecorators.logging
     def post_otd(self):
